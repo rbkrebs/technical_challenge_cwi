@@ -1,6 +1,7 @@
 package com.cwi.desafio.cwi.business.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -19,6 +20,7 @@ public class Sessao implements Serializable {
     @JoinColumn(name = "pauta_id")
     private Pauta pauta;
 
+    @NotNull
     private LocalDateTime inicioVotacao;
 
     private LocalDateTime fimVotacao;

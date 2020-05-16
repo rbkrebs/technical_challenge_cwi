@@ -2,6 +2,7 @@ package com.cwi.desafio.cwi.business.model;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
@@ -17,7 +18,7 @@ public class Pauta implements Serializable {
     @OneToOne
     @JoinColumn(name = "sessao_id")
     private Sessao sessao;
-
+    @NotNull
     private String descricaoPauta;
 
     public Pauta() {
