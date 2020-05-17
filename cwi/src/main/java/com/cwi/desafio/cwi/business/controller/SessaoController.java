@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 public class SessaoController {
 
     @Autowired
-    private SessaoRepository sessaoRepository;
+    SessaoRepository sessaoRepository;
 
     public Sessao salvarSessao(Sessao sessao){
         return sessaoRepository.save(sessao);

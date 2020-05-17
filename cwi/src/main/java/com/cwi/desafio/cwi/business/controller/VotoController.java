@@ -12,7 +12,7 @@ import org.springframework.stereotype.Controller;
 public class VotoController {
 
     @Autowired
-    private VotoRepository votoRepository;
+    VotoRepository votoRepository;
 
     public Voto salvarVoto(Voto voto){
         return votoRepository.save(voto);

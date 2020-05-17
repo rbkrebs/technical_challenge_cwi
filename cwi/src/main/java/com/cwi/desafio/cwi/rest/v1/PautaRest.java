@@ -5,6 +5,7 @@ import com.cwi.desafio.cwi.business.controller.PautaController;
 import com.cwi.desafio.cwi.business.model.Pauta;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,8 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class PautaRest {
 
-    private PautaController pautaController = new PautaController();
+    @Autowired
+    private PautaController pautaController;
 
 
     @GetMapping("/pauta")
