@@ -6,20 +6,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Controller
-public class PautaController {
+public class PautaController implements ControllerInterface<Pauta> {
 
-   @Autowired
+    @Autowired
     private PautaService pautaService;
 
-   public Pauta salvarPauta(Pauta pauta){
-       return this.pautaService.salvarPauta(pauta);
-   }
 
-   public List<Pauta> listarPautas(){
-       return (List<Pauta>) this.pautaService.listarPautas();
-   }
+    @Override
+    public Optional<Pauta> salvar(Pauta pauta) {
+        return this.pautaService.salvar(pauta);
+    }
 
+    @Override
+    public Optional<List<Pauta>> listarTodos() {
+        return this.pautaService.listarTodos();
+    }
 }
+

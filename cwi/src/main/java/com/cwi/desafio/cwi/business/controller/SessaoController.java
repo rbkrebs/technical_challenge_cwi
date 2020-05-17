@@ -2,19 +2,28 @@ package com.cwi.desafio.cwi.business.controller;
 
 
 import com.cwi.desafio.cwi.business.model.Sessao;
-import com.cwi.desafio.cwi.business.repository.SessaoRepository;
+import com.cwi.desafio.cwi.business.service.SessaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import java.util.List;
+import java.util.Optional;
+
 
 @Controller
-public class SessaoController {
+public class SessaoController implements ControllerInterface<Sessao> {
 
     @Autowired
-    SessaoRepository sessaoRepository;
+    private SessaoService sessaoService;
 
-    public Sessao salvarSessao(Sessao sessao){
-        return sessaoRepository.save(sessao);
+
+    @Override
+    public Optional<Sessao> salvar(Sessao sessao) {
+        return this.sessaoService.salvar(sessao);
     }
 
+    @Override
+    public Optional<List<Sessao>> listarTodos() {
+        return this.sessaoService.listarTodos();
+    }
 }

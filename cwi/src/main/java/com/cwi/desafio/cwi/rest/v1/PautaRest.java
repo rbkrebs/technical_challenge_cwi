@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/assembleia")
+@RequestMapping("/v1/assembleia")
 @Api(value="API REST Pauta")
 @CrossOrigin(origins = "*")
 public class PautaRest {
@@ -25,14 +25,14 @@ public class PautaRest {
     @ApiOperation(value = "Retorna todos os registros de pauta")
     public List<Pauta> findAll(){
 
-        return this.pautaController.listarPautas();
+        return this.pautaController.listarTodos().get();
     }
 
     @PostMapping("/pauta")
     @ApiOperation(value = "Cria um registro de pauta")
     public Pauta create(@Validated @RequestBody Pauta pauta) {
 
-        return this.pautaController.salvarPauta(pauta);
+        return this.pautaController.salvar(pauta).get();
 
     }
 

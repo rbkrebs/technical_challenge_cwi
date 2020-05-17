@@ -7,19 +7,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class PautaService {
+public class PautaService implements ServiceInterface<Pauta> {
 
     @Autowired
     private PautaRepository pautaRepository;
 
-    public Pauta salvarPauta(Pauta pauta){
-        return pautaRepository.save(pauta);
+    @Override
+    public Optional<Pauta> salvar(Pauta pauta) {
+
+        return Optional.of(pautaRepository.save(pauta));
     }
 
-    public List<Pauta> listarPautas(){
-
-        return (List<Pauta>) pautaRepository.findAll();
+    @Override
+    public Optional<List<Pauta>> listarTodos() {
+        return Optional.of((List<Pauta>) pautaRepository.findAll());
     }
 }
