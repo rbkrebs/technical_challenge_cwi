@@ -26,7 +26,7 @@ public class SwaggerConfig {
     public Docket SwaggerConfigApi(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("br.com.cwi.desafio.cwi.rest"))
+                .apis(RequestHandlerSelectors.basePackage("com.cwi.desafio.cwi.rest.v1"))
                 .build()
                 .apiInfo(metaInfo())
                 .useDefaultResponseMessages(false)

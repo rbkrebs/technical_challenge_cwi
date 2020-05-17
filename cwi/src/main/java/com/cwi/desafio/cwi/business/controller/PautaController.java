@@ -5,6 +5,8 @@ import com.cwi.desafio.cwi.business.repository.PautaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import java.util.List;
+
 
 @Controller
 public class PautaController {
@@ -14,6 +16,10 @@ public class PautaController {
 
     public Pauta salvarPauta(Pauta pauta){
         return pautaRepository.save(pauta);
+    }
+
+    public List<Pauta> listarPautas(){
+        return pautaRepository.findAll();
     }
 
 }
