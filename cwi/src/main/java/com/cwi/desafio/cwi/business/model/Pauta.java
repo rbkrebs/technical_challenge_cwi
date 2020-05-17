@@ -15,9 +15,7 @@ public class Pauta implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long pauta_id;
 
-    @OneToOne
-    @JoinColumn(name = "sessao_id")
-    private Sessao sessao;
+
     @NotNull
     private String descricaoPauta;
 

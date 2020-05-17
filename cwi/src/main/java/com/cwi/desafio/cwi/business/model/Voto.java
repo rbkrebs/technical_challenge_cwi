@@ -1,6 +1,7 @@
 package com.cwi.desafio.cwi.business.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
@@ -24,6 +25,7 @@ public class Voto {
     @JoinColumn(name = "associado_id")
     private Associado associado;
 
+    @NotNull
     private TipoVoto tipoVoto;
 
     public Voto() {
