@@ -1,19 +1,27 @@
 package com.cwi.desafio.cwi.business.model;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
+@Data
+@EqualsAndHashCode(of = "id")
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name="TB_PAUTA")
 public class Pauta implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long pauta_id;
+    private long id;
 
 
     @NotNull
@@ -26,19 +34,4 @@ public class Pauta implements Serializable {
         this.descricaoPauta = descricaoPauta;
     }
 
-    public long getPauta_id() {
-        return pauta_id;
-    }
-
-    public void setPauta_id(long pauta_id) {
-        this.pauta_id = pauta_id;
-    }
-
-    public String getDescricaoPauta() {
-        return descricaoPauta;
-    }
-
-    public void setDescricaoPauta(String descricaoPauta) {
-        this.descricaoPauta = descricaoPauta;
-    }
 }

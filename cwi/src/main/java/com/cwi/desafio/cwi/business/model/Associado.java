@@ -1,21 +1,33 @@
 package com.cwi.desafio.cwi.business.model;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
+@Data
+@EqualsAndHashCode(of = "id")
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name="TB_ASSOCIADO")
 public class Associado implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long associado_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
     @NotNull
+    @Min(11)
+    @Max(11)
     private long cpf;
 
     public Associado() {
@@ -26,19 +38,5 @@ public class Associado implements Serializable {
     }
 
 
-    public long getAssociado_id() {
-        return associado_id;
-    }
 
-    public void setAssociado_id(long associado_id) {
-        this.associado_id = associado_id;
-    }
-
-    public long getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(long cpf) {
-        this.cpf = cpf;
-    }
 }
