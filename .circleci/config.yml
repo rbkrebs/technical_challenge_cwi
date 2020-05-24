@@ -1,9 +1,45 @@
+# CIRCLE CI AINDA NÃO CONFIGURADO!!!!
+
 version: 2.1
 
 orbs:
   maven: circleci/maven@0.0.12
 
-workflows:
-  maven_test:
-    jobs:
-      - maven/test # checkout, build, test, and upload test results
+build: # runs not using Workflows must have a `build` job as entry point
+
+  working_directory: ~/cwi # directory where steps will run
+
+  docker: # run the steps with Docker
+    - image: circleci/openjdk:8-jdk-stretch # ...with this image as the primary container; this is where all `steps` will run
+
+  steps: # a collection of executable commands
+
+    - checkout # check out source code to working directory
+
+    - restore_cache: # restore the saved cache after the first run or if `pom.xml` has changed
+        # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
+        key: cwi-{{ checksum "pom.xml" }}
+    #esta parte abaixo deve rodar o selenium no circleCI conforme documentação oficial
+    - checkout
+    - run: mkdir test-reports
+
+    - run: mvn dependency:go-offline # gets the project dependencies
+
+
+    - run: mvn test  package  # run the actual tests
+
+    - store_test_results: # uploads the test metadata from the `target/surefire-reports` directory so that it can show up in the CircleCI dashboard.
+        # Upload test results for display in Test Summary: https://circleci.com/docs/2.0/collect-test-data/
+        path: target/surefire-reports
+
+    - store_artifacts: # store the uberjar as an artifact
+        # Upload test summary for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
+        path: target/cwi-2.2.1.RELEASE.jar
+    # See https://circleci.com/docs/2.0/deployment-integrations/ for deploy examples
+    - run:
+        name: Deploy Master to Heroku
+        command: |
+          git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+
+
+
