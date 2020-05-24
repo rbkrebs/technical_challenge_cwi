@@ -30,12 +30,6 @@ public class Associado implements Serializable {
     @Max(11)
     private long cpf;
 
-    public Associado() {
-    }
-
-    public Associado(long cpf) {
-    this.cpf = cpf;
-    }
 
 
 

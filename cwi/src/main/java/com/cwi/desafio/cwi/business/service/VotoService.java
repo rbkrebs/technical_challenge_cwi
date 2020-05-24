@@ -27,4 +27,6 @@ public class VotoService implements ServiceInterface<Voto> {
     public Optional<List<Voto>> listarTodos() {
         return Optional.of( votoRepository.findAll());
     }
+
+
 }

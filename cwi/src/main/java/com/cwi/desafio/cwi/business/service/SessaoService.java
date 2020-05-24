@@ -27,4 +27,6 @@ public class SessaoService implements ServiceInterface<Sessao> {
     public Optional<List<Sessao>> listarTodos() {
         return Optional.of((List<Sessao>) sessaoRepository.findAll());
     }
+
+
 }

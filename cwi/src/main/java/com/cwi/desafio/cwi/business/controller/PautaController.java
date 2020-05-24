@@ -18,12 +18,19 @@ public class PautaController implements ControllerInterface<Pauta> {
 
     @Override
     public Optional<Pauta> salvar(Pauta pauta) {
+
+
         return this.pautaService.salvar(pauta);
     }
 
     @Override
     public Optional<List<Pauta>> listarTodos() {
         return this.pautaService.listarTodos();
+    }
+
+
+    public Optional<Pauta> buscarPorId(long id) {
+        return pautaService.acharPorId(id);
     }
 }
 

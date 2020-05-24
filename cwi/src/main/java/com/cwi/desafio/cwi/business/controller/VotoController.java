@@ -26,4 +26,6 @@ public class VotoController implements ControllerInterface<Voto> {
     public Optional<List<Voto>> listarTodos() {
         return this.votoService.listarTodos();
     }
+
+
 }

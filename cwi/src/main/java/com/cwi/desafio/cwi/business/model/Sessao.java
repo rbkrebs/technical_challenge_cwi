@@ -27,7 +27,6 @@ public class Sessao implements Serializable {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "pauta_id")
     private Pauta pauta;
 
     @NotNull
@@ -37,6 +36,7 @@ public class Sessao implements Serializable {
     @NotNull
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime fimVotacao;
+
 
 
 }

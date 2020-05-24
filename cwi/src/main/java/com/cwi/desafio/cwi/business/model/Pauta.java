@@ -27,11 +27,6 @@ public class Pauta implements Serializable {
     @NotNull
     private String descricaoPauta;
 
-    public Pauta() {
-    }
 
-    public Pauta(String descricaoPauta){
-        this.descricaoPauta = descricaoPauta;
-    }
 
 }

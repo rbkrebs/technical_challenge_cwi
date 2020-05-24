@@ -25,4 +25,10 @@ public class PautaService implements ServiceInterface<Pauta> {
     public Optional<List<Pauta>> listarTodos() {
         return Optional.of((List<Pauta>) pautaRepository.findAll());
     }
+
+
+    public  Optional<Pauta> acharPorId(long id) {
+
+        return pautaRepository.findById(id);
+    }
 }
