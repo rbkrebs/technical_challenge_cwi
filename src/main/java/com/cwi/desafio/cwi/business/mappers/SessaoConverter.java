@@ -5,6 +5,7 @@ import com.cwi.desafio.cwi.business.mappers.interfaces.SessaoMapper;
 import com.cwi.desafio.cwi.business.model.Pauta;
 import com.cwi.desafio.cwi.business.model.Sessao;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -36,7 +37,14 @@ public class SessaoConverter implements SessaoMapper {
 
 
         Sessao sessao = new Sessao();
-        sessao.setFimVotacao(sessaoDTO.getFimVotacaoConverted());
+
+        if(sessaoDTO.getFimVotacao().isEmpty()){
+
+            sessao.setFimVotacao(sessaoDTO.getInicioVotacaoConverted().plusSeconds(60));
+        }else{
+            sessao.setFimVotacao(sessaoDTO.getFimVotacaoConverted());
+        }
+
         sessao.setInicioVotacao(sessaoDTO.getInicioVotacaoConverted());
         sessao.setPauta(pauta);
 

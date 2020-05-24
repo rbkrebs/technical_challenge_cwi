@@ -27,9 +27,6 @@ public class SessaoController implements ControllerInterface<Sessao> {
         if(this.validaFimVotacao(sessao)){
             throw new IllegalArgumentException(SessaoExceptionMessage.TIME_ERROR);
         }
-        if(!Optional.of(sessao.getFimVotacao()).isPresent()){
-            sessao.setFimVotacao(sessao.getInicioVotacao().plusMinutes(60));
-        }
 
         return this.sessaoService.salvar(sessao);
     }

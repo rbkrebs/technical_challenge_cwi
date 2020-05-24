@@ -1,6 +1,7 @@
 package com.cwi.desafio.cwi.business.dto;
 
 
+import com.cwi.desafio.cwi.business.exceptions.SessaoExceptionMessage;
 import com.cwi.desafio.cwi.business.mappers.SessaoConverter;
 import com.cwi.desafio.cwi.business.model.Pauta;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -14,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.IllegalFormatException;
 import java.util.TimeZone;
 
 
@@ -31,15 +33,23 @@ public class SessaoDTO {
     private String fimVotacao;
 
     @JsonIgnore
-    public LocalDateTime getInicioVotacaoConverted()  {
-        LocalDateTime dateTime = LocalDateTime.parse(this.inicioVotacao, formatter);
-        return dateTime;
+    public LocalDateTime getInicioVotacaoConverted() throws IllegalFormatException {
+        try{
+            return  LocalDateTime.parse(this.inicioVotacao, formatter);
+        }catch (Exception e){
+            throw new IllegalArgumentException(SessaoExceptionMessage.FORMATED_TIME);
+        }
     }
 
     @JsonIgnore
     public LocalDateTime getFimVotacaoConverted() {
-        LocalDateTime dateTime = LocalDateTime.parse(this.fimVotacao, formatter);
-        return dateTime;
+        try{
+           return  LocalDateTime.parse(this.fimVotacao, formatter);
+        }catch (Exception e){
+            throw new IllegalArgumentException(SessaoExceptionMessage.FORMATED_TIME);
+        }
+
+
     }
 
 
