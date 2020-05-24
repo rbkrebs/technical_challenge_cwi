@@ -53,8 +53,6 @@ public class SessaoRest {
 
         sessao = this.sessaoController.salvar(sessao).get();
 
-        System.out.println(sessao);
-
         return this.sessaoConverter.modelToDto(sessao);
 
     }
