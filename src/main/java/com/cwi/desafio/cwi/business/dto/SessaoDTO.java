@@ -26,6 +26,7 @@ public class SessaoDTO {
 
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
+    private long id;
     @NotNull
     private long pauta_id;
     @NotNull

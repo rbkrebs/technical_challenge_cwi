@@ -10,6 +10,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Data
@@ -26,8 +27,8 @@ public class Associado implements Serializable {
     private long id;
 
     @NotNull
-    @Min(11)
-    @Max(11)
+    @Size(min = 11, max = 11)
+    @Column(unique=true)
     private long cpf;
 
 

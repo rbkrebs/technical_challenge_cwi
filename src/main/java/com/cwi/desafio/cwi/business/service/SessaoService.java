@@ -28,5 +28,10 @@ public class SessaoService implements ServiceInterface<Sessao> {
         return Optional.of((List<Sessao>) sessaoRepository.findAll());
     }
 
+    public  Optional<Sessao> acharPorId(long id) {
+
+        return sessaoRepository.findById(id);
+    }
+
 
 }

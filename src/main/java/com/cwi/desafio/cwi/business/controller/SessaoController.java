@@ -4,6 +4,8 @@ package com.cwi.desafio.cwi.business.controller;
 import com.cwi.desafio.cwi.business.dto.SessaoDTO;
 import com.cwi.desafio.cwi.business.exceptions.SessaoExceptionMessage;
 import com.cwi.desafio.cwi.business.mappers.SessaoConverter;
+import com.cwi.desafio.cwi.business.model.Associado;
+import com.cwi.desafio.cwi.business.model.Pauta;
 import com.cwi.desafio.cwi.business.model.Sessao;
 import com.cwi.desafio.cwi.business.service.SessaoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +38,9 @@ public class SessaoController implements ControllerInterface<Sessao> {
         return this.sessaoService.listarTodos();
     }
 
-
+    public Optional<Sessao> buscarPorId(long id) {
+        return this.sessaoService.acharPorId(id);
+    }
 
     public boolean validaFimVotacao(Sessao sessao){
 
